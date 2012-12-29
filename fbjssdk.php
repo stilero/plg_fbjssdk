@@ -25,7 +25,7 @@ class plgSystemFbjssdk extends JPlugin {
     
     function plgSystemFbjssdk ( &$subject, $config ) {
         parent::__construct( $subject, $config );
-        $this->channelFile = JURI::root().'/plugins/system/fbjssdk/includes/channel.php';
+        $this->channelFile = JURI::root().'plugins/system/fbjssdk/includes/channel.php';
         $this->fbAppId = $this->params->def('fbappid');
         $language = JFactory::getLanguage();
         $locale = str_replace( "-", "_", $language->getTag() );
