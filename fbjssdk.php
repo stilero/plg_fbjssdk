@@ -36,8 +36,10 @@ class plgSystemFbjssdk extends JPlugin {
         $FBSDK = new FBSDK($this->fbAppId, $this->channelFile, $this->locale);
         $fbSDKHTML = $FBSDK->getHTML();
         $output = JResponse::getBody();
-        $newOutput = str_replace('<body>', '<body>'.$fbSDKHTML, $output);
+        $matches = preg_split('/(<body.*?>)/i', $output, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE); 
+        $newOutput = $matches[0] . $matches[1] . $fbSDKHTML . $matches[2];
         JResponse::setBody($newOutput);
         return true;
     }
+    
 } //End Class
