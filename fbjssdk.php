@@ -33,6 +33,9 @@ class plgSystemFbjssdk extends JPlugin {
     }
     
     function onAfterRender(){
+        if(!JFactory::getApplication()->isSite()){
+            return;
+        }
         $FBSDK = new FBSDK($this->fbAppId, $this->channelFile, $this->locale);
         $fbSDKHTML = $FBSDK->getHTML();
         $output = JResponse::getBody();
